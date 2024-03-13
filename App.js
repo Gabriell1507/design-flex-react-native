@@ -29,8 +29,8 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Image style={styles.stretch} source={Pipoca} />
+    <View style={styles.div}>
+      <Image style={styles.imagem} source={Pipoca} />
 
       <Text style={styles.texto}>Cadastre o seu filme:</Text>
 
@@ -57,25 +57,29 @@ export default function App() {
         />
       </View>
 
-      <FlatList
+      <FlatList style = {styles.lista}
         data={movies}
         renderItem={({ item }) => <Text style={styles.movie}>{item}</Text>}
         keyExtractor={(item, index) => index.toString()}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  div: {
     flex: 2,
-    alignItems: "center",
     backgroundColor: "#fe5bac",
     padding: 8,
   },
+  imagem: {
+    alignSelf: 'center',
+    width: 350,
+    height: 350,
+  },
   texto: {
     margin: 24,
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -92,12 +96,13 @@ const styles = StyleSheet.create({
   flex: {
     flexDirection: "row",
     margin: 20,
+    justifyContent: 'space-between',
     gap: 20,
-    justifyContent: 'center',
   },
  
-  center: {
-    justifyContent: "center",
-    marginTop: 20,
-  },
+  movie: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    alignSelf: 'center'
+  }
 });
